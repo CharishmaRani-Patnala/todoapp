@@ -8,37 +8,25 @@
 </head>
 <body>
     <div class="box">
-        <h1>too do</h1>
+        <h1>Todo List</h1>
     </div>
-    <h1>Todo List</h1>
-<div class="todo-container">
-  <div class="task completed">
-    <input type="checkbox" checked>
-    <span>FullStack</span>
-  </div>
-  <div class="input-container">
-    <input type="text" placeholder="Enter a new task">
-    <button>+</button>
-  </div>
-</div>
     <div class="box">
-       <% ejes.forEach(function(Items,i) { %>
+
+        <% ejes.forEach(function(items) { %>
             <form action="/delete" method="post">
-            <div class="item">
-                <input type="checkbox" name="checkbox1" value="<%= Items._id %>" onchange="this.form.submit()">
-                <p>
-                    <%= ejes[i].name %>
-                </p>
-            </div>
+                <div class="item">
+                    <input type="checkbox" name="checkbox1" value="<%= items._id %>" onchange="this.form.submit()">
+                    <p>
+                        <%= items.name %>
+                    </p>
+                </div>
             </form>
-            <% }) %>
+        <% }); %>
                 <form action="/" method="post">
                     <input type="text" name="ele1" placeholder="Enter a new task">
-                    <button value="+" type="submit">+</button>
+                    <button type="submit">+</button>
                 </form>
     </div>
-</div>
-</div>
 </body>
 </html>
 
