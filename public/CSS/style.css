@@ -1,83 +1,167 @@
-html {
-    background: linear-gradient(135deg, #A18CD1 0%, #FBC2EB 100%);
-    min-height: 100vh;
-    font-family: 'Helvetica Neue', sans-serif;
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List</title>
+  <style>
+    html {
+      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+      min-height: 100vh;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
 
-h1 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: bold;
-    color: white;
-}
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
 
-#heading {
-    background: linear-gradient(to right, #c471f5, #fa71cd);
-    text-align: center;
-    padding: 20px;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    width: fit-content;
-    margin: 40px auto 20px auto;
-}
+    .container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
 
-.box {
-    max-width: 420px;
-    margin: 0 auto;
-    background: linear-gradient(to right, #fdfbfb, #ebedee);
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-}
+    .box {
+      max-width: 400px;
+      width: 100%;
+      font-size: 1rem;
+      background: linear-gradient(to bottom right, #ffffff, #f7f7f7);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
 
-input[type="text"] {
-    background: linear-gradient(to right, #e0c3fc, #8ec5fc);
-    border: none;
-    font-size: 18px;
-    font-weight: 400;
-    border-radius: 25px;
-    padding: 12px 20px;
-    color: #333;
-    width: 70%;
-    text-align: center;
-    outline: none;
-    transition: 0.3s ease;
-}
+    #heading {
+      background: linear-gradient(to right, #a683e3, #8e9eab);
+      text-align: center;
+      padding: 20px 0;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
 
-input[type="text"]::placeholder {
-    color: #555;
-    opacity: 0.8;
-}
+    h1 {
+      color: #fff;
+      margin: 0;
+      font-size: 2rem;
+    }
 
-button {
-    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
-    color: white;
-    border: none;
-    font-size: 24px;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    margin-left: 10px;
-    transition: transform 0.2s ease;
-}
+    .item {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      transition: background 0.3s ease-in-out;
+    }
 
-button:hover {
-    transform: scale(1.05);
-}
+    .item:hover {
+      background: linear-gradient(to right, #d4fc79, #96e6a1);
+    }
 
-footer {
-    color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-}
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    input:checked + p {
+      text-decoration: line-through;
+      text-decoration-color: #A683E3;
+    }
+
+    input[type="checkbox"] {
+      margin: 20px;
+      accent-color: #a683e3;
+    }
+
+    p {
+      margin: 0;
+      padding: 20px;
+      font-size: 1rem;
+      font-weight: 300;
+      color: #00204a;
+    }
+
+    form {
+      text-align: center;
+      padding: 20px;
+    }
+
+    button {
+      min-height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background: linear-gradient(to right, #a683e3, #d3cce3);
+      color: white;
+      font-size: 30px;
+      padding-bottom: 6px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+    }
+
+    input[type="text"] {
+      text-align: center;
+      height: 60px;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      font-weight: 300;
+      width: 80%;
+      border-bottom: 2px solid #a683e3;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #7f7fd5;
+      box-shadow: inset 0 -3px 0 0 #7f7fd5;
+    }
+
+    ::placeholder {
+      color: grey;
+      opacity: 0.7;
+    }
+
+    footer {
+      color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <div id="heading">
+        <h1>To-Do List</h1>
+      </div>
+
+      <!-- Example Items -->
+      <div class="item">
+        <input type="checkbox" id="task1">
+        <p>Complete homework</p>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="task2">
+        <p>Buy groceries</p>
+      </div>
+
+      <!-- Add Task Form -->
+      <form>
+        <input type="text" placeholder="New Task" required />
+        <button type="submit">+</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
