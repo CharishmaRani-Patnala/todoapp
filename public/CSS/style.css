@@ -1,167 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>To-Do List</title>
-  <style>
-    html {
-      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-      min-height: 100vh;
-      font-family: 'Helvetica Neue', sans-serif;
-    }
+html {
+    background: linear-gradient(135deg, #f5e1f4 0%, #d3cce3 100%);
+    min-height: 100vh;
+    font-family: 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
+.box {
+    max-width: 400px;
+    width: 90%;
+    margin: 50px auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
 
-    .container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+#heading {
+    background: linear-gradient(90deg, #c6a7f8, #a686d6);
+    text-align: center;
+    color: #ffffff;
+    font-size: 22px;
+    padding: 18px 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
 
-    .box {
-      max-width: 400px;
-      width: 100%;
-      font-size: 1rem;
-      background: linear-gradient(to bottom right, #ffffff, #f7f7f7);
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
+.item {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f2f2f2;
+    padding: 0 15px;
+    background-color: #f9f8fd;
+}
 
-    #heading {
-      background: linear-gradient(to right, #a683e3, #8e9eab);
-      text-align: center;
-      padding: 20px 0;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
+.item:last-child {
+    border-bottom: none;
+}
 
-    h1 {
-      color: #fff;
-      margin: 0;
-      font-size: 2rem;
-    }
+input:checked + p {
+    text-decoration: line-through;
+    text-decoration-color: #a686d6;
+}
 
-    .item {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      background: linear-gradient(to right, #e0eafc, #cfdef3);
-      transition: background 0.3s ease-in-out;
-    }
+input[type="checkbox"] {
+    margin-right: 15px;
+    accent-color: #a686d6;
+}
 
-    .item:hover {
-      background: linear-gradient(to right, #d4fc79, #96e6a1);
-    }
+p {
+    margin: 0;
+    padding: 15px 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
 
-    .item:last-child {
-      border-bottom: none;
-    }
+form {
+    text-align: center;
+    padding: 20px 10px;
+    background-color: #f4f3f8;
+}
 
-    input:checked + p {
-      text-decoration: line-through;
-      text-decoration-color: #A683E3;
-    }
+input[type="text"] {
+    width: 80%;
+    height: 50px;
+    font-size: 16px;
+    padding: 0 10px;
+    border: none;
+    border-bottom: 2px solid #c6a7f8;
+    background: transparent;
+    text-align: center;
+    color: #333;
+}
 
-    input[type="checkbox"] {
-      margin: 20px;
-      accent-color: #a683e3;
-    }
+input[type="text"]:focus {
+    outline: none;
+    border-bottom: 2px solid #a686d6;
+}
 
-    p {
-      margin: 0;
-      padding: 20px;
-      font-size: 1rem;
-      font-weight: 300;
-      color: #00204a;
-    }
+::placeholder {
+    color: #aaa;
+    font-weight: 300;
+}
 
-    form {
-      text-align: center;
-      padding: 20px;
-    }
+button {
+    margin-top: 10px;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #c6a7f8, #a686d6);
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(166, 134, 214, 0.4);
+    transition: transform 0.2s ease;
+}
 
-    button {
-      min-height: 50px;
-      width: 50px;
-      border-radius: 50%;
-      background: linear-gradient(to right, #a683e3, #d3cce3);
-      color: white;
-      font-size: 30px;
-      padding-bottom: 6px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
-    }
+button:hover {
+    transform: scale(1.1);
+}
 
-    button:hover {
-      transform: scale(1.1);
-      background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
-    }
-
-    input[type="text"] {
-      text-align: center;
-      height: 60px;
-      border: none;
-      background: transparent;
-      font-size: 1rem;
-      font-weight: 300;
-      width: 80%;
-      border-bottom: 2px solid #a683e3;
-      transition: border-color 0.3s;
-    }
-
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #7f7fd5;
-      box-shadow: inset 0 -3px 0 0 #7f7fd5;
-    }
-
-    ::placeholder {
-      color: grey;
-      opacity: 0.7;
-    }
-
-    footer {
-      color: rgba(0, 0, 0, 0.5);
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="box">
-      <div id="heading">
-        <h1>To-Do List</h1>
-      </div>
-
-      <!-- Example Items -->
-      <div class="item">
-        <input type="checkbox" id="task1">
-        <p>Complete homework</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" id="task2">
-        <p>Buy groceries</p>
-      </div>
-
-      <!-- Add Task Form -->
-      <form>
-        <input type="text" placeholder="New Task" required />
-        <button type="submit">+</button>
-      </form>
-    </div>
-  </div>
-</body>
-</html>
+footer {
+    text-align: center;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.4);
+    padding: 10px 0;
+}
