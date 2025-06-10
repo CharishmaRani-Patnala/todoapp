@@ -1,8 +1,6 @@
 /* Global Styles */
 html {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
-    background-size: 400% 400%;
-    animation: gradientBG 12s ease infinite;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
     min-height: 100vh;
     font-family: 'Helvetica Neue', sans-serif;
     display: flex;
@@ -10,45 +8,40 @@ html {
     align-items: center;
 }
 
-/* Background Gradient Animation */
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 /* Main Container */
 .box {
     max-width: 350px;
     width: 90%;
     margin: auto;
-    background: linear-gradient(145deg, #ffffff, #f7f7f7);
+    background: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     text-align: center;
     padding-bottom: 10px;
 }
 
 /* Heading */
 #heading {
-    background: linear-gradient(90deg, #a18cd1, #fbc2eb);
+    background: #ffffff;
     padding: 15px;
-    color: white;
-    font-size: 22px;
+    color: #000000;
+    font-size: 20px;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    white-space: nowrap; /* keep in one line */
 }
 
 /* Item Section */
 .item {
-    min-height: 60px;
+    min-height: 55px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #eee;
     padding: 0 10px;
-    background-color: #fff0f6;
+    background-color: #fceffb;
 }
 
 .item:last-child {
@@ -71,7 +64,7 @@ input:checked + p {
 p {
     margin: 0;
     padding: 15px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
     color: #333;
 }
@@ -85,8 +78,8 @@ form {
 /* Input Field */
 input[type="text"] {
     width: 80%;
-    padding: 12px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 15px;
     border: none;
     border-bottom: 2px solid #a18cd1;
     background: transparent;
@@ -110,17 +103,16 @@ button {
     width: 45px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, #a18cd1, #fcbad3);
+    background: #a18cd1;
     color: white;
     font-size: 24px;
     cursor: pointer;
     box-shadow: 0 5px 12px rgba(161, 140, 209, 0.5);
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 button:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(252, 186, 211, 0.6);
 }
 
 /* Footer */
